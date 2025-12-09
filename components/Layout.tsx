@@ -29,10 +29,10 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
     <div className="min-h-screen bg-black text-white font-sans selection:bg-white selection:text-black overflow-x-hidden flex flex-col">
       {/* Header */}
       <header className={`fixed top-0 left-0 w-full z-40 transition-all duration-300 border-b border-transparent ${scrolled ? 'bg-black/95 backdrop-blur-md border-neutral-900 py-3' : 'bg-transparent py-5'}`}>
-        <div className="container mx-auto px-6 flex items-center justify-between">
+        <div className="container mx-auto px-6 relative flex items-center justify-between">
           
           {/* Left Side: Mobile Menu OR Desktop Nav */}
-          <div className="flex items-center">
+          <div className="flex items-center z-20">
             {/* Mobile Hamburger */}
             <button onClick={() => setIsMobileMenuOpen(true)} className="text-white hover:text-neutral-300 transition-colors md:hidden">
               <Menu size={24} />
@@ -62,13 +62,15 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
             </nav>
           </div>
 
-          {/* Center Logo */}
-          <Link to="/" className="absolute left-1/2 transform -translate-x-1/2 z-50">
-            <Logo className="h-6 md:h-10 w-auto" />
-          </Link>
+          {/* Center Logo - Positioned Absolute to be perfectly centered relative to the screen */}
+          <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 flex items-center justify-center">
+             <Link to="/">
+                <Logo className="h-8 md:h-12 w-auto" />
+             </Link>
+          </div>
 
           {/* Right Side Icons */}
-          <div className="flex items-center space-x-6">
+          <div className="flex items-center space-x-6 z-20">
             <button className="text-white hover:text-neutral-300 transition-colors hidden md:block">
               <Search size={24} />
             </button>
