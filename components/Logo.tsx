@@ -1,23 +1,20 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 export const Logo: React.FC<{ className?: string }> = ({ className }) => {
-  const [hasError, setHasError] = useState(false);
-
-  if (hasError) {
-    // Fallback elegante para texto caso a imagem não carregue
-    return (
-      <span className={`font-heading font-bold italic tracking-tighter flex items-center justify-center ${className} text-white`}>
-        NORC
-      </span>
-    );
-  }
-
   return (
     <img 
       src="norc.png" 
       alt="NORC" 
       className={`object-contain ${className}`}
-      onError={() => setHasError(true)}
+      onError={(e) => {
+        const target = e.currentTarget;
+        // Evita loop infinito: se já tentamos public/ e falhou, não fazemos nada
+        if (!target.src.includes('public/')) {
+          // Se falhou no caminho raiz, tenta buscar explicitamente dentro de public/
+          // Isso resolve casos onde o servidor não mapeia public para a raiz
+          target.src = 'public/norc.png';
+        }
+      }}
     />
   );
 };
