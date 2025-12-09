@@ -65,9 +65,9 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
           <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 flex items-center justify-center">
              <Link to="/">
                 <img 
-                  src="norc.png" 
+                  src="logonorc.png" 
                   alt="NORC" 
-                  className="h-8 md:h-12 w-auto object-contain"
+                  className="h-10 md:h-14 w-auto object-contain"
                 />
              </Link>
           </div>
@@ -126,9 +126,9 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
             <div className="lg:col-span-5 p-8 md:p-12 border-b lg:border-b-0 lg:border-r border-neutral-800 flex flex-col justify-between min-h-[300px]">
                 <div>
                     <img 
-                      src="norc.png" 
+                      src="logonorc.png" 
                       alt="NORC" 
-                      className="h-16 md:h-20 w-auto mb-8 object-contain"
+                      className="h-24 w-auto mb-8 object-contain"
                     />
                     <p className="font-mono text-xs text-neutral-500 uppercase tracking-widest max-w-xs mt-4">
                         // Est. 2024<br/>
@@ -285,9 +285,9 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
           <div className="flex justify-between items-center mb-12">
              <Link to="/" onClick={() => setIsMobileMenuOpen(false)}>
                 <img 
-                  src="norc.png" 
+                  src="logonorc.png" 
                   alt="NORC" 
-                  className="h-6 w-auto object-contain"
+                  className="h-10 w-auto object-contain"
                 />
              </Link>
              <button onClick={() => setIsMobileMenuOpen(false)}><X size={32} /></button>
