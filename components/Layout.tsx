@@ -27,62 +27,64 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
 
   return (
     <div className="min-h-screen bg-black text-white font-sans selection:bg-white selection:text-black overflow-x-hidden flex flex-col">
-      {/* Header */}
-      <header className={`fixed top-0 left-0 w-full z-40 transition-all duration-300 border-b border-transparent ${scrolled ? 'bg-black/95 backdrop-blur-md border-neutral-900 py-3' : 'bg-transparent py-5'}`}>
-        <div className="container mx-auto px-6 flex items-center justify-between">
-          
-          {/* Left Side: Mobile Menu OR Desktop Nav */}
-          <div className="flex items-center">
-            {/* Mobile Hamburger */}
-            <button onClick={() => setIsMobileMenuOpen(true)} className="text-white hover:text-neutral-300 transition-colors md:hidden">
-              <Menu size={24} />
-            </button>
+     <header className={`fixed top-0 left-0 w-full z-40 transition-all duration-300 border-b border-transparent ${scrolled ? 'bg-black/95 backdrop-blur-md border-neutral-900' : 'bg-transparent'}`}>
+  <div className="container mx-auto px-6 flex items-center justify-between h-16 md:h-20 relative">
+    
+    {/* Left Side: Mobile Menu OR Desktop Nav */}
+    <div className="flex items-center z-10">
+      {/* Mobile Hamburger */}
+      <button onClick={() => setIsMobileMenuOpen(true)} className="text-white hover:text-neutral-300 transition-colors md:hidden">
+        <Menu size={24} />
+      </button>
 
-            {/* Desktop Navigation */}
-            <nav className="hidden md:flex items-center space-x-6">
-              <Link to="/shop" className="text-sm font-bold uppercase tracking-widest hover:text-neutral-400 transition-colors">
-                Shop
-              </Link>
-              <div className="h-4 w-px bg-neutral-800 mx-2"></div>
-              {Object.values(LINES).map((line) => (
-                <Link 
-                  key={line.id}
-                  to={`/line/${line.id}`}
-                  className="text-xs font-bold uppercase tracking-widest transition-colors duration-300"
-                  style={{ color: '#fff' }}
-                  onMouseEnter={(e) => e.currentTarget.style.color = line.color}
-                  onMouseLeave={(e) => e.currentTarget.style.color = '#fff'}
-                >
-                  {line.name.replace('NORC ', '')}
-                </Link>
-              ))}
-              <Link to="/about" className="text-xs font-bold uppercase tracking-widest text-neutral-500 hover:text-white transition-colors ml-4">
-                About
-              </Link>
-            </nav>
-          </div>
-
-          {/* Center Logo */}
-          <Link to="/" className="absolute left-1/2 transform -translate-x-1/2 z-50">
-            <Logo className="h-6 md:h-10 w-auto" />
+      {/* Desktop Navigation */}
+      <nav className="hidden md:flex items-center space-x-6">
+        <Link to="/shop" className="text-sm font-bold uppercase tracking-widest hover:text-neutral-400 transition-colors">
+          Shop
+        </Link>
+        <div className="h-4 w-px bg-neutral-800 mx-2"></div>
+        {Object.values(LINES).map((line) => (
+          <Link 
+            key={line.id}
+            to={`/line/${line.id}`}
+            className="text-xs font-bold uppercase tracking-widest transition-colors duration-300"
+            style={{ color: '#fff' }}
+            onMouseEnter={(e) => e.currentTarget.style.color = line.color}
+            onMouseLeave={(e) => e.currentTarget.style.color = '#fff'}
+          >
+            {line.name.replace('NORC ', '')}
           </Link>
+        ))}
+        <Link to="/about" className="text-xs font-bold uppercase tracking-widest text-neutral-500 hover:text-white transition-colors ml-4">
+          About
+        </Link>
+      </nav>
+    </div>
 
-          {/* Right Side Icons */}
-          <div className="flex items-center space-x-6">
-            <button className="text-white hover:text-neutral-300 transition-colors hidden md:block">
-              <Search size={24} />
-            </button>
-            <button onClick={toggleCart} className="text-white hover:text-neutral-300 transition-colors relative">
-              <ShoppingBag size={24} />
-              {cart.length > 0 && (
-                <span className="absolute -top-2 -right-2 bg-white text-black text-[10px] font-bold h-4 w-4 flex items-center justify-center rounded-none">
-                  {cart.length}
-                </span>
-              )}
-            </button>
-          </div>
-        </div>
-      </header>
+    {/* Center Logo */}
+    <Link 
+      to="/" 
+      className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-50 flex items-center"
+    >
+      <Logo className="h-8 md:h-12 w-auto" />
+    </Link>
+
+    {/* Right Side Icons */}
+    <div className="flex items-center space-x-6 z-10">
+      <button className="text-white hover:text-neutral-300 transition-colors hidden md:block">
+        <Search size={24} />
+      </button>
+      <button onClick={toggleCart} className="text-white hover:text-neutral-300 transition-colors relative">
+        <ShoppingBag size={24} />
+        {cart.length > 0 && (
+          <span className="absolute -top-2 -right-2 bg-white text-black text-[10px] font-bold h-4 w-4 flex items-center justify-center rounded-none">
+            {cart.length}
+          </span>
+        )}
+      </button>
+    </div>
+  </div>
+</header>
 
       {/* Main Content */}
       <main className="pt-0 flex-grow">
