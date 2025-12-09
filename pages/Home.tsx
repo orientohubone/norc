@@ -39,6 +39,13 @@ export const Home = () => {
 
   const featuredProducts = PRODUCTS.slice(0, 4);
 
+  const manifestoLinesHome = [
+    'Somos forjados na disciplina.',
+    'Moldados pela precisão.',
+    'Movidos pelo propósito.',
+    'NORC — Precision in Motion.'
+  ];
+
   return (
     <div className="flex flex-col">
       {/* Hero Section */}
@@ -80,7 +87,7 @@ export const Home = () => {
             />
 
             {/* Ambient Colors (Nebula effect) */}
-            <div className="absolute inset-0 blur-[120px] opacity-30 animate-pulse">
+            <div className="absolute inset-0 blur-[120px] opacity-30">
                 <div className="absolute top-0 left-1/4 w-1/2 h-1/2 rounded-full" style={{ background: LINES.FORCE.color }}></div>
                 <div className="absolute top-0 right-1/4 w-1/2 h-1/2 rounded-full" style={{ background: LINES.MIND.color }}></div>
                 <div className="absolute bottom-0 left-1/4 w-1/2 h-1/2 rounded-full" style={{ background: LINES.URBAN.color }}></div>
@@ -134,18 +141,43 @@ export const Home = () => {
         
         {/* Main Title Content */}
         <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4 z-20">
-          <h1 className="font-heading text-6xl md:text-[10rem] italic font-bold tracking-tighter mb-2 text-white drop-shadow-2xl mix-blend-overlay leading-none">
+          <h1 className="font-heading text-8xl md:text-[14rem] italic font-black tracking-tighter mb-2 text-white drop-shadow-2xl mix-blend-overlay leading-none" style={{
+            textShadow: '0 0 15px rgba(95, 208, 104, 0.3), 0 20px 40px rgba(0,0,0,0.8)'
+          }}>
             NORC
           </h1>
-          <h1 className="absolute font-heading text-6xl md:text-[10rem] italic font-bold tracking-tighter mb-2 text-transparent stroke-text leading-none select-none pointer-events-none" style={{ WebkitTextStroke: '1px rgba(255,255,255,0.3)'}}>
+          <h1 className="absolute font-heading text-8xl md:text-[14rem] italic font-black tracking-tighter mb-2 text-transparent stroke-text leading-none select-none pointer-events-none" style={{ WebkitTextStroke: '2px rgba(95, 208, 104, 0.25)'}}>
             NORC
           </h1>
-          <p className="text-sm md:text-xl uppercase tracking-[0.5em] mb-12 text-neutral-300 z-20 font-light">
-            Precision in Motion
-          </p>
+          <div className="mb-12 z-20 flex items-center justify-center gap-4">
+            <div className="h-1 w-12" style={{ backgroundColor: '#5FD068' }} />
+            <p className="text-sm md:text-lg uppercase tracking-[0.3em] text-neutral-400 font-light">
+              Precision in Motion
+            </p>
+            <div className="h-1 w-12" style={{ backgroundColor: '#5FD068' }} />
+          </div>
           <div className="z-20">
-            <Button onClick={() => window.scrollTo({ top: window.innerHeight, behavior: 'smooth' })}>
-                Forge Your Path
+            <Button onClick={() => window.scrollTo({ top: window.innerHeight, behavior: 'smooth' })} style={{
+              padding: '16px 48px',
+              fontSize: '16px',
+              fontWeight: 700,
+              letterSpacing: '0.05em',
+              textTransform: 'uppercase',
+              background: 'linear-gradient(135deg, #5FD068 0%, #4db857 100%)',
+              boxShadow: '0 0 30px rgba(95, 208, 104, 0.6), 0 0 60px rgba(95, 208, 104, 0.3)',
+              border: 'none',
+              borderRadius: '4px',
+              transition: 'all 300ms ease'
+            }}
+            onMouseEnter={(e) => {
+              (e.currentTarget as HTMLElement).style.boxShadow = '0 0 50px rgba(95, 208, 104, 0.9), 0 0 100px rgba(95, 208, 104, 0.5), 0 20px 60px rgba(0,0,0,0.9)';
+              (e.currentTarget as HTMLElement).style.transform = 'translateY(-4px) scale(1.05)';
+            }}
+            onMouseLeave={(e) => {
+              (e.currentTarget as HTMLElement).style.boxShadow = '0 0 30px rgba(95, 208, 104, 0.6), 0 0 60px rgba(95, 208, 104, 0.3)';
+              (e.currentTarget as HTMLElement).style.transform = 'translateY(0) scale(1)';
+            }}>
+              Forge Your Path
             </Button>
           </div>
         </div>
@@ -206,14 +238,11 @@ export const Home = () => {
       <section ref={manifestoRef} className="py-32 md:py-48 bg-black px-6 flex justify-center items-center relative overflow-hidden">
         {/* Abstract Background Element */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] border border-neutral-900 rounded-full opacity-20 pointer-events-none animate-[spin_60s_linear_infinite]" />
-        
+
         <div className={`max-w-4xl text-center transition-all duration-1000 transform ${manifestoVisible ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0'}`}>
-          <h3 className="font-heading text-3xl md:text-5xl leading-tight md:leading-snug uppercase tracking-wide">
-            <span className="block mb-4 text-neutral-600 font-light">Somos forjados na disciplina.</span>
-            <span className="block mb-4 text-neutral-400">Moldados pela precisão.</span>
-            <span className="block mb-8 text-white">Movidos pelo propósito.</span>
-            <span className="block text-4xl md:text-7xl mt-12 italic text-white mix-blend-difference">NORC — Precision in Motion.</span>
-          </h3>
+          <div className="mx-auto max-w-2xl relative z-10">
+            <CodeTypewriter lines={manifestoLinesHome} />
+          </div>
         </div>
       </section>
 
@@ -238,6 +267,97 @@ export const Home = () => {
           </div>
         </div>
       </section>
+    </div>
+  );
+};
+
+// Typewriter component renders lines sequentially with a blinking cursor, styled like code
+const CodeTypewriter: React.FC<{ lines: string[] }> = ({ lines }) => {
+  const [completed, setCompleted] = useState<string[]>([]);
+  const [currentLineIdx, setCurrentLineIdx] = useState(0);
+  const [currentCharIdx, setCurrentCharIdx] = useState(0);
+  const [isDone, setIsDone] = useState(false);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    let mounted = true;
+    if (currentLineIdx >= lines.length) {
+      setIsDone(true);
+      return;
+    }
+
+    const line = lines[currentLineIdx];
+    if (currentCharIdx <= line.length) {
+      const t = setTimeout(() => {
+        if (!mounted) return;
+        setCurrentCharIdx((c) => c + 1);
+      }, 40 + Math.random() * 40);
+      return () => {
+        mounted = false;
+        clearTimeout(t);
+      };
+    } else {
+      // finish this line, pause, then go to next
+      const pause = setTimeout(() => {
+        setCompleted((prev) => [...prev, line]);
+        setCurrentLineIdx((i) => i + 1);
+        setCurrentCharIdx(0);
+      }, 500);
+      return () => clearTimeout(pause);
+    }
+  }, [currentCharIdx, currentLineIdx, lines]);
+
+  const partial = currentLineIdx < lines.length ? lines[currentLineIdx].slice(0, currentCharIdx) : '';
+
+  // Use NORC FORCE green for the highlighted last-line effect
+  const highlightColor = LINES.FORCE?.color || '#5FD068';
+
+  return (
+    <div className="bg-neutral-900/40 backdrop-blur-sm p-6 rounded-md border border-neutral-800 font-mono text-left text-neutral-200">
+      <pre className="whitespace-pre-wrap text-lg md:text-xl leading-relaxed">
+        <code>
+          {completed.map((l, i) => (
+            <div key={i} className="flex gap-4 items-start">
+              <span className="text-neutral-500 w-12">{String(i + 1).padStart(2, '0')}</span>
+              <span className="break-words">{l}</span>
+            </div>
+          ))}
+
+          {currentLineIdx < lines.length && (
+            <div className="flex gap-4 items-start">
+              <span className="text-neutral-500 w-12">{String(completed.length + 1).padStart(2, '0')}</span>
+              <span className="break-words">
+                <span style={currentLineIdx === lines.length - 1 ? { color: highlightColor, fontWeight: 700 } : undefined}>
+                  {partial}
+                </span>
+                <span className="inline-block ml-1 align-middle animate-blink">|</span>
+              </span>
+            </div>
+          )}
+
+          {isDone && (
+            <div className="mt-4">
+              <div className="flex items-center justify-center gap-4 mb-4">
+                <span className="inline-block w-2 h-2 rounded-full" style={{ background: highlightColor, boxShadow: `0 0 10px ${highlightColor}` }} />
+                <span className="text-sm uppercase text-neutral-300">DESBLOQUEADO</span>
+              </div>
+              <div className="flex justify-center">
+                <button
+                  onClick={() => navigate('/shop')}
+                  className="px-6 py-3 bg-transparent border-2 font-bold rounded-md"
+                  style={{ borderColor: highlightColor, color: highlightColor, boxShadow: `0 6px 20px ${highlightColor}22` }}
+                >
+                  Explore Collection
+                </button>
+              </div>
+            </div>
+          )}
+        </code>
+      </pre>
+      <style>{`
+        @keyframes blink { 50% { opacity: 0 } }
+        .animate-blink { animation: blink 1s steps(2,start) infinite; }
+      `}</style>
     </div>
   );
 };

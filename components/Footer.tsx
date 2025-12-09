@@ -6,6 +6,57 @@ import { LINES } from '../constants';
 export const Footer: React.FC = () => {
   return (
     <footer className="bg-black text-white border-t border-neutral-800">
+      {/* Line vazado text that follows mouse */}
+      <div className="relative">
+        <div className="w-full flex justify-center gap-8 py-6 px-4 overflow-hidden">
+          {Object.values(LINES).map((line) => (
+            <div
+              key={line.id}
+              onMouseMove={(e) => {
+                const target = e.currentTarget as HTMLDivElement;
+                const rect = target.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                target.style.setProperty('--mouse-x', `${x}px`);
+                target.style.setProperty('--mouse-y', `${y}px`);
+                target.style.opacity = '1';
+              }}
+              onMouseLeave={(e) => {
+                const target = e.currentTarget as HTMLDivElement;
+                // gently fade the spotlight
+                target.style.opacity = '0.25';
+              }}
+              className="relative cursor-none select-none"
+              style={{
+                width: 'min(32vw, 380px)',
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                // initialize css variables
+                ['--mouse-x' as any]: '50%',
+                ['--mouse-y' as any]: '50%',
+                opacity: '0.25',
+              }}
+            >
+              <span
+                className="font-extrabold uppercase tracking-widest leading-none"
+                style={{
+                  fontSize: 'clamp(28px, 6vw, 96px)',
+                  WebkitBackgroundClip: 'text',
+                  backgroundClip: 'text',
+                  color: 'transparent',
+                  WebkitTextFillColor: 'transparent',
+                  backgroundImage: `radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), ${line.color} 0%, ${line.color} 12%, rgba(255,255,255,0.06) 24%, transparent 40%)`,
+                  transition: 'opacity 300ms ease, background-position 120ms linear',
+                  textAlign: 'center',
+                }}
+              >
+                {line.name.replace('NORC ', '')}
+              </span>
+            </div>
+          ))}
+        </div>
+      </div>
       
       {/* Top Marquee */}
       <div className="border-b border-neutral-800 py-4 bg-neutral-950 overflow-hidden relative z-10">
