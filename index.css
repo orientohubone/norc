@@ -2,6 +2,32 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Visual identity gallery preserves the complete artwork. */
+.identity-intro { padding-top: 190px !important; padding-bottom: 60px !important; background: radial-gradient(ellipse at right top, #172b1a, transparent 65%); }
+.norc-home .identity-intro h1 { font-size: clamp(40px, 6.3vw, 90px); }
+.identity-intro .section-description { margin: 28px 0; font-size: 16px; }
+.identity-index { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 32px; }
+.identity-index a { padding: 12px 20px; border: 1px solid #3a4939; border-radius: 30px; font-size: 12px; }
+.identity-index a:hover { background: #5fd068; color: #071109; }
+.identity-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 35px 24px; align-items: start; }
+.identity-figure { margin: 0; min-width: 0; }
+.identity-figure > a { position: relative; display: block; border: 1px solid #2c342b; border-radius: 14px; overflow: hidden; background: #101310; }
+.identity-figure img { display: block; width: 100%; height: auto; }
+.identity-zoom { position: absolute; right: 14px; bottom: 14px; display: inline-flex; align-items: center; gap: 8px; padding: 10px 14px; border-radius: 30px; background: #050905e8; color: white; font-size: 11px; }
+.identity-figure a:hover .identity-zoom { background: #5fd068; color: #071109; }
+.identity-figure figcaption { padding-top: 15px; font-size: 13px; color: #b7c1b4; }
+.identity-group { border-top: 1px solid #252d23; }
+.identity-group:nth-of-type(odd) { background: #0c100c; }
+.identity-group .section-heading h2 { border-left: 3px solid var(--identity-color); padding-left: 20px; }
+.identity-grid-single { grid-template-columns: minmax(0, 850px); justify-content: center; }
+@media (min-width: 768px) and (max-width: 1050px) { .norc-header .brand-header-cta { padding: 12px; font-size: 9px; gap: 6px; }.norc-header .desktop-nav a { padding: 12px 8px; } }
+@media (max-width: 767px) {
+  .identity-intro { padding-top: 155px !important; padding-bottom: 40px !important; }
+  .identity-intro .section-description { font-size: 14px; }
+  .identity-grid { grid-template-columns: 1fr; gap: 30px; }
+  .identity-index a { padding: 11px 15px; }
+}
+
 .scroll-motion-pending { opacity: 0; }
 @media (prefers-reduced-motion: reduce), print {
   .scroll-motion-pending { opacity: 1; }

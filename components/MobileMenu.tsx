@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+﻿import React, { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { X } from 'lucide-react';
 import { LINES } from '../constants';
@@ -46,6 +46,7 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
         </div>
         
         <nav className="flex flex-col space-y-6">
+          <Link to="/identidade-visual" onClick={onClose} className="font-heading text-3xl">Identidade visual</Link>
           <Link to="/" onClick={onClose} className="font-heading text-3xl">Início</Link>
           <Link to="/#linhas" onClick={onClose} className="font-heading text-4xl hover:text-neutral-400 transition-colors">Nosso universo</Link>
           {Object.values(LINES).map((line) => (
@@ -65,3 +66,4 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
     </div>
   );
 };
+

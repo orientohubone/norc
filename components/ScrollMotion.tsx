@@ -22,6 +22,7 @@ export const ScrollMotion = () => {
         '.home-cta', '.footer-top > *', '.footer-bottom',
         '.brand-intro > *', '.line-story > *', '.principle-grid > *',
         '.brand-manifesto > *',
+        '.identity-intro > *', '.identity-grid > *',
         'main > :not(.norc-home) section',
       ].join(',');
       const elements = Array.from(document.querySelectorAll<HTMLElement>(selector));

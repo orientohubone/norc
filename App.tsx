@@ -4,6 +4,7 @@ import { Layout } from './components/Layout';
 import { Home } from './pages/Home';
 import { LinePage } from './pages/LinePage';
 import { About } from './pages/About';
+import { VisualIdentity } from './pages/VisualIdentity';
 
 const ScrollToSection = () => {
   const { pathname, hash } = useLocation();
@@ -26,6 +27,7 @@ const App = () => (
         <Route path="/" element={<Home />} />
         <Route path="/line/:id" element={<LinePage />} />
         <Route path="/about" element={<About />} />
+        <Route path="/identidade-visual" element={<VisualIdentity />} />
         <Route path="/shop" element={<Navigate to="/#linhas" replace />} />
         <Route path="/product/:id" element={<Navigate to="/#linhas" replace />} />
         <Route path="*" element={<Navigate to="/" replace />} />
@@ -34,3 +36,4 @@ const App = () => (
   </HashRouter>
 );
 export default App;
+
