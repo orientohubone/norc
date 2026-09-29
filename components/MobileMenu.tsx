@@ -46,6 +46,7 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
         </div>
         
         <nav className="flex flex-col space-y-6">
+          <Link to="/app" onClick={onClose} className="font-heading text-3xl">App NORC</Link>
           <Link to="/feira" onClick={onClose} className="font-heading text-3xl">NORC na feira</Link>
           <Link to="/identidade-visual" onClick={onClose} className="font-heading text-3xl">Identidade visual</Link>
           <Link to="/" onClick={onClose} className="font-heading text-3xl">Início</Link>
@@ -67,5 +68,6 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose }) => {
     </div>
   );
 };
+
 
 

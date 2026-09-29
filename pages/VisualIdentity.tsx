@@ -3,6 +3,7 @@ import { ArrowUpRight } from 'lucide-react';
 
 const asset = (file: string) => '/idvisualnorc/' + file + '.png';
 const groups = [
+  { id: 'folder', title: 'FOLDER', description: 'A apresentação impressa da marca, das quatro linhas e do app NORC.', color: '#5FD068', images: [['foldermockup', 'Folder NORC — apresentação e dobras'], ['folderexterno-noc', 'Folder NORC — face externa'], ['folderinterno-norc', 'Folder NORC — face interna e quatro linhas']] },
   { id: 'force', title: 'FORCE', description: 'Força e disciplina em cada aplicação.', color: '#48B055', images: [['force-regata', 'Regata Force'], ['force-regata2', 'Regata Force — segunda aplicação'], ['force-oversized', 'Camiseta oversized Force'], ['force-bolsatreino', 'Bolsa de treino Force']] },
   { id: 'mind', title: 'MIND', description: 'Clareza, conforto e presença no cotidiano.', color: '#5B9BD4', images: [['mind-moletom', 'Moletom Mind'], ['mind-cotidiano', 'Mind no cotidiano']] },
   { id: 'urban', title: 'URBAN', description: 'Identidade em movimento pela cidade.', color: '#77549F', images: [['jaqueta-urban', 'Jaqueta Urban']] },

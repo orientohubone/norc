@@ -40,7 +40,8 @@ export const Fair = () => {
         { icon: CalendarDays, title: 'Sua rotina de hoje', text: 'A interface reúne atividades, duração e ação para iniciar. O projeto mostra treino de força de 45 minutos e leitura de 20 minutos.' },
         { icon: ChartNoAxesColumnIncreasing, title: 'Progresso da semana', text: 'Uma barra apresenta as atividades concluídas. A navegação reúne Hoje, Rotina, Evolução e Perfil.' },
       ].map(item => <article key={item.title}><item.icon size={30} /><h3>{item.title}</h3><p>{item.text}</p></article>)}</div>
-      <Link className="text-link" to="/feira#experiencias">Voltar às experiências <ArrowUpRight size={18} /></Link>
+      <Link className="text-link" to="/app">Explore as telas do app <ArrowUpRight size={18} /></Link>
     </section>
   </div>;
 };
+

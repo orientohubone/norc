@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Full-width spreads keep the folder text readable. */
+#folder .identity-grid { grid-template-columns: minmax(0, 1fr); gap: 36px; }
+#folder .identity-figure:first-child { width: 100%; max-width: 1000px; justify-self: center; }
+
 /* Visual identity gallery preserves the complete artwork. */
 .identity-intro { padding-top: 190px !important; padding-bottom: 60px !important; background: radial-gradient(ellipse at right top, #172b1a, transparent 65%); }
 .norc-home .identity-intro h1 { font-size: clamp(40px, 6.3vw, 90px); }
@@ -238,4 +242,77 @@ body { margin: 0; }
   .fair-journey, .fair-app-grid { grid-template-columns: 1fr; }
   .fair-products { grid-template-columns: 1fr; padding: 20px; }.fair-products img { max-width: 220px; }
   .fair-selector button { padding: 16px 12px; }.fair-selector small { font-size: 9px; }
+}
+
+.app-showcase .app-showcase-intro { padding-top: 180px; padding-bottom: 45px; }
+.norc-home .app-showcase-intro h1 { font-size: clamp(45px, 6.5vw, 94px); }
+.app-showcase-intro .section-description { margin: 28px 0; font-size: 16px; }
+.app-gallery-note { color: #5fd068; font-size: 12px; }
+.app-showcase .app-gallery { padding-top: 30px; }
+.app-gallery-filters { display: flex; gap: 10px; flex-wrap: wrap; }
+.app-gallery-filters button { border: 1px solid #344331; border-radius: 30px; padding: 13px 20px; font-size: 13px; }
+.app-gallery-filters button span { opacity: .7; margin-left: 10px; font-size: 10px; }
+.app-gallery-filters button[aria-pressed="true"] { background: var(--screen-color); color: #080e08; border-color: var(--screen-color); }
+.app-gallery-status { display: flex; justify-content: space-between; gap: 15px; color: #b4bdb0; font-size: 12px; margin: 25px 0; }
+.app-screen-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 40px 28px; }
+.app-screen-preview { display: block; position: relative; width: 100%; padding: 20px; background: radial-gradient(ellipse at center, #1c291d, #0c100c); border: 1px solid #303b2d; border-radius: 20px; }
+.app-screen-preview img { display: block; height: 450px; max-width: 100%; width: auto; margin: auto; object-fit: contain; border-radius: 14px; }
+.app-screen-preview > span { display: inline-flex; align-items: center; gap: 8px; font-size: 11px; margin-top: 18px; }
+.app-screen-preview:hover { border-color: var(--screen-color); }
+.app-screen-caption { padding: 20px 4px 0; }.app-screen-caption > span { color: var(--screen-color); font-size: 11px; text-transform: uppercase; letter-spacing: .12em; }
+.norc-home .app-screen-caption h2 { font-size: 23px; line-height: 1.2; letter-spacing: -.04em; margin: 10px 0; }
+.app-screen-caption p { font-size: 13px; line-height: 1.7; color: #b5beb1; }
+.app-screen-dialog { padding: 0; border: 1px solid #3b4737; border-radius: 18px; background: #0d110d; color: white; width: min(960px, 96vw); max-width: 96vw; max-height: 96dvh; margin: auto; }
+.app-screen-dialog::backdrop { background: #000d; backdrop-filter: blur(8px); }
+.app-dialog-shell { display: flex; flex-direction: column; height: 92dvh; }
+.app-dialog-header { display: flex; justify-content: space-between; align-items: center; padding: 16px 22px; gap: 16px; }
+.app-dialog-header span { font-size: 11px; color: #aebba8; }
+.norc-home .app-dialog-header h2 { font-size: 20px; line-height: 1.3; letter-spacing: -.03em; margin-top: 5px; }
+.app-dialog-header button, .app-dialog-tools button, .app-dialog-tools a { min-height: 44px; min-width: 44px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 8px; border-radius: 8px; }
+.app-dialog-viewport { flex: 1; min-height: 0; overflow: auto; background: #030503; padding: 12px; }
+.app-dialog-viewport img { display: block; height: 100%; width: auto; max-width: 100%; object-fit: contain; margin: 0 auto; }
+.app-dialog-viewport.is-zoomed img { height: auto; width: min(860px, 100%); max-width: none; }
+.app-dialog-tools { display: flex; justify-content: space-between; gap: 6px; padding: 8px 16px; border-top: 1px solid #303b2d; font-size: 12px; }
+.app-dialog-tools button:hover:not(:disabled), .app-dialog-tools a:hover, .app-dialog-header button:hover { background: #263324; }
+.app-dialog-tools button:disabled { opacity: .3; cursor: not-allowed; }
+.app-dialog-description { font-size: 12px; color: #b6c0b1; padding: 0 22px 16px; }
+@media (min-width: 768px) and (max-width: 1250px) { .norc-header .brand-header-cta { display: none; }.norc-header .desktop-nav a { padding: 12px 8px; font-size: 9px; } }
+@media (max-width: 1000px) { .app-screen-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 600px) {
+  .app-showcase .app-showcase-intro { padding-top: 150px; }
+  .app-screen-grid { grid-template-columns: 1fr; gap: 32px; }
+  .app-screen-preview img { height: auto; max-height: 560px; }
+  .app-gallery-filters { gap: 8px; }.app-gallery-filters button { padding: 11px 14px; }
+  .app-gallery-status { flex-direction: column; gap: 8px; }
+  .app-dialog-header { padding: 12px 16px; }.app-dialog-tools { padding: 8px; font-size: 10px; gap: 2px; }
+  .app-dialog-description { font-size: 11px; padding: 0 16px 12px; }
+}
+
+.app-carousel { border: 1px solid #303b2d; border-radius: 22px; background: radial-gradient(ellipse at 25% 50%, #1a291c, #0a0e0a 70%); overflow: hidden; }
+.app-carousel-window { overflow: hidden; touch-action: pan-y pinch-zoom; }
+.app-carousel-track { display: flex; transition: transform 600ms cubic-bezier(.22,1,.36,1); }
+.app-carousel-slide { flex: 0 0 100%; min-width: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 45px; padding: 40px 7%; align-items: center; }
+.app-carousel .app-screen-preview { background: none; border: 0; padding: 0; }
+.app-carousel .app-screen-preview img { height: clamp(420px, 65vh, 680px); max-width: 100%; width: auto; box-shadow: 0 20px 65px #0008; }
+.app-carousel .app-screen-caption { max-width: 420px; padding: 0; }
+.norc-home .app-carousel .app-screen-caption h2 { font-size: clamp(30px, 3.5vw, 52px); margin: 22px 0; }
+.app-carousel .app-screen-caption p { font-size: 16px; line-height: 1.8; }
+.app-carousel .app-slide-number { display: block; margin-top: 35px; font-size: 12px; opacity: .7; }
+.app-carousel-controls { display: flex; align-items: center; justify-content: center; gap: 24px; padding: 22px; border-top: 1px solid #2b3528; }
+.app-carousel-controls > button { display: flex; align-items: center; justify-content: center; width: 46px; height: 46px; flex-shrink: 0; border: 1px solid #54614f; border-radius: 100%; }
+.app-carousel-controls > button:hover:not(:disabled) { color: #071109; background: #5fd068; }
+.app-carousel-controls > button:disabled { opacity: .25; cursor: not-allowed; }
+.app-carousel-dots { display: flex; justify-content: center; flex-wrap: wrap; }
+.app-carousel-dots button { width: 28px; height: 44px; display: flex; align-items: center; justify-content: center; }
+.app-carousel-dots span { width: 6px; height: 6px; border-radius: 100%; background: #586152; }
+.app-carousel-dots button[aria-pressed="true"] span { background: #5fd068; width: 18px; border-radius: 10px; }
+@media (max-width: 767px) {
+  .app-carousel-slide { grid-template-columns: 1fr; gap: 24px; padding: 28px 6%; }
+  .app-carousel .app-screen-preview img { height: auto; max-height: 58svh; }
+  .app-carousel .app-screen-caption { text-align: center; margin: auto; }
+  .norc-home .app-carousel .app-screen-caption h2 { font-size: 28px; margin: 12px 0; }
+  .app-carousel .app-screen-caption p { font-size: 13px; }
+  .app-carousel .app-slide-number { margin-top: 18px; }
+  .app-carousel-controls { gap: 8px; padding: 14px 10px; }
+  .app-carousel-dots button { width: 22px; height: 28px; }
 }
