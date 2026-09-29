@@ -1,20 +1,73 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+﻿# NORC — Precision in Motion
 
-# Run and deploy your AI Studio app
+Site institucional em React, TypeScript e Vite. Inclui a marca, quatro linhas, identidade visual, projeto da feira e apresentação do app.
 
-This contains everything you need to run your app locally.
+## Desenvolvimento
 
-View your app in AI Studio: https://ai.studio/apps/drive/15sctxHonFSxwkewNqwO2sPCCF5b9wYHx
+Use Node.js 22.x e npm.
 
-## Run Locally
+~~~sh
+npm ci
+npm run dev
+~~~
 
-**Prerequisites:**  Node.js
+## Validação e build
 
+~~~sh
+npm run build
+npm run preview
+~~~
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+O build verifica o TypeScript e gera o site em dist/. Todos os arquivos de public/ são copiados para a publicação. Não são necessárias variáveis de ambiente, chaves de API ou banco de dados.
+
+## Deploy na Vercel pelo Git
+
+1. Envie o projeto para um repositório Git, incluindo package-lock.json e toda a pasta public/.
+2. Na Vercel, selecione Add New → Project e importe o repositório.
+3. Use a raiz do projeto como Root Directory.
+4. Selecione Node.js 22.x nas configurações de build.
+5. Clique em Deploy.
+
+O arquivo vercel.json define:
+
+| Configuração | Valor |
+| --- | --- |
+| Framework | Vite |
+| Instalação | npm ci |
+| Build | npm run build |
+| Saída | dist |
+
+Após conectar o repositório, os próximos pushes seguem a configuração de deploy do projeto na Vercel.
+
+## Deploy pelo terminal
+
+Na raiz do projeto:
+
+~~~sh
+npx vercel login
+npx vercel
+~~~
+
+O segundo comando cria um deploy de preview e solicita a conta/projeto de destino. Confira a URL gerada. Para publicar em produção:
+
+~~~sh
+npx vercel --prod
+~~~
+
+A pasta .vercel é local e não deve ser versionada. O arquivo .vercelignore exclui arquivos locais do envio pelo CLI.
+
+## Rotas e conferência após o deploy
+
+O site utiliza HashRouter. O endereço da página do app, por exemplo, termina em /#/app. O fragmento após # é tratado no navegador, por isso não é necessário rewrite de SPA na Vercel.
+
+Confira:
+- /#/ — home
+- /#/about — marca
+- /#/line/FORCE — exemplo de linha
+- /#/identidade-visual — imagens e folder
+- /#/feira — stand e seleção das experiências
+- /#/app — filtros, carrossel e ampliação das telas
+
+Abra também as rotas diretamente e atualize a página. Confirme imagens, menu móvel e navegação. As imagens em public/ acompanham o deploy; algumas fotografias e fontes do site são carregadas de serviços externos.
+
+Documentação: https://vercel.com/docs/frameworks/frontend/vite

@@ -316,3 +316,16 @@ body { margin: 0; }
   .app-carousel-controls { gap: 8px; padding: 14px 10px; }
   .app-carousel-dots button { width: 22px; height: 28px; }
 }
+
+.footer-credit { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; padding: 24px 0 32px; border-top: 1px solid #242b21; text-align: center; }
+.footer-credit > span { font-size: 11px; letter-spacing: .08em; color: #aeb6a8; }
+.footer-credit img { display: block; width: 240px; max-width: 100%; height: 70px; object-fit: cover; object-position: center; border-radius: 8px; }
+
+.footer-credit-link { display: inline-flex; align-items: center; gap: 13px; text-align: left; border-radius: 12px; }
+.footer-credit-link img { width: 56px; height: 56px; object-fit: contain; border-radius: 12px; flex-shrink: 0; }
+.footer-credit-text { display: flex; flex-direction: column; gap: 4px; }
+.footer-credit-text > span { font-size: 12px; color: #aeb6a8; }
+.footer-credit-text strong { font-size: 15px; font-weight: 500; color: #fff; }
+.footer-credit-link > svg { margin-left: 10px; color: #5fd068; transition: transform .2s; }
+.footer-credit-link:hover > svg { transform: translate(2px, -2px); }
+.footer-credit-link:hover strong { color: #5fd068; }
