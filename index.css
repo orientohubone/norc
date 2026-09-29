@@ -201,3 +201,41 @@ body { margin: 0; }
   .related-lines .collection-card { height: 300px; }
   .collections-section + .purpose-banner { margin-top: 50px; }
 }
+
+.fair-page .fair-intro { padding-top: 185px; padding-bottom: 50px; }
+.norc-home .fair-intro h1 { font-size: clamp(42px, 6.5vw, 94px); }
+.fair-intro-bottom { display: flex; justify-content: space-between; align-items: center; gap: 24px; margin: 30px 0 45px; }
+.fair-intro-bottom p, .fair-page article p, .fair-experience-copy > p, .fair-products p { font-size: 15px; line-height: 1.8; color: #b8c2b5; }
+.fair-image { margin: 0; min-width: 0; }
+.fair-image > a { display: block; position: relative; border-radius: 16px; overflow: hidden; }
+.fair-image img { width: 100%; height: auto; display: block; }
+.fair-image figcaption { margin-top: 14px; font-size: 12px; color: #a9b3a5; }
+.fair-journey, .fair-app-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; margin-top: 40px; }
+.fair-journey article { padding-top: 24px; border-top: 1px solid #344331; }
+.fair-journey article > span, .fair-app-grid svg { color: var(--norc-green); }
+.norc-home .fair-page h3, .norc-home.fair-page h3 { font-size: 25px; letter-spacing: -.04em; line-height: 1.2; margin: 18px 0; }
+.fair-experiences { background: #0d120d; }
+.fair-selector { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin-bottom: 32px; }
+.fair-selector button { display: flex; align-items: center; gap: 12px; text-align: left; border: 1px solid #344031; border-radius: 12px; padding: 20px; transition: border-color .2s, background .2s; }
+.fair-selector button[aria-pressed="true"] { border-color: var(--experience-color); background: #ffffff09; }
+.fair-selector button svg, .fair-selector button[aria-pressed="true"] span { color: var(--experience-color); }
+.fair-selector small { display: block; font-size: 10px; margin-top: 6px; color: #b8c2b5; }
+.fair-experience { display: grid; grid-template-columns: 1.6fr 1fr; align-items: center; gap: 35px; }
+.fair-experience-copy .eyebrow { color: var(--experience-color); }
+.fair-app-note { display: flex; align-items: start; gap: 14px; border-top: 1px solid #344031; margin: 24px 0; padding-top: 24px; }
+.fair-app-note svg { flex-shrink: 0; color: var(--experience-color); }
+.fair-app-note p { font-size: 13px; line-height: 1.8; color: #bdc6b9; }
+.fair-products { display: grid; grid-template-columns: 180px 1fr; align-items: center; gap: 30px; padding: 28px; border: 1px solid #344031; border-radius: 16px; margin-top: 40px; }
+.fair-products img { width: 100%; height: auto; border-radius: 10px; }
+.fair-products .pill { margin-top: 20px; }
+.fair-app-grid { margin-bottom: 40px; }
+.fair-app-grid article { padding: 28px; border: 1px solid #344031; border-radius: 14px; background: #0d120d; }
+@media (min-width: 768px) and (max-width: 1150px) { .norc-header .brand-header-cta { display: none; } }
+@media (max-width: 900px) { .fair-experience { grid-template-columns: 1fr; }.fair-selector { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 767px) {
+  .fair-page .fair-intro { padding-top: 155px; }
+  .fair-intro-bottom { flex-direction: column; align-items: start; }
+  .fair-journey, .fair-app-grid { grid-template-columns: 1fr; }
+  .fair-products { grid-template-columns: 1fr; padding: 20px; }.fair-products img { max-width: 220px; }
+  .fair-selector button { padding: 16px 12px; }.fair-selector small { font-size: 9px; }
+}

@@ -5,6 +5,7 @@ import { Home } from './pages/Home';
 import { LinePage } from './pages/LinePage';
 import { About } from './pages/About';
 import { VisualIdentity } from './pages/VisualIdentity';
+import { Fair } from './pages/Fair';
 
 const ScrollToSection = () => {
   const { pathname, hash } = useLocation();
@@ -28,6 +29,7 @@ const App = () => (
         <Route path="/line/:id" element={<LinePage />} />
         <Route path="/about" element={<About />} />
         <Route path="/identidade-visual" element={<VisualIdentity />} />
+        <Route path="/feira" element={<Fair />} />
         <Route path="/shop" element={<Navigate to="/#linhas" replace />} />
         <Route path="/product/:id" element={<Navigate to="/#linhas" replace />} />
         <Route path="*" element={<Navigate to="/" replace />} />
@@ -36,4 +38,5 @@ const App = () => (
   </HashRouter>
 );
 export default App;
+
 

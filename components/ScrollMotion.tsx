@@ -23,6 +23,8 @@ export const ScrollMotion = () => {
         '.brand-intro > *', '.line-story > *', '.principle-grid > *',
         '.brand-manifesto > *',
         '.identity-intro > *', '.identity-grid > *',
+        '.fair-intro > *', '.fair-overview > .fair-image',
+        '.fair-journey > *', '.fair-app-grid > *',
         'main > :not(.norc-home) section',
       ].join(',');
       const elements = Array.from(document.querySelectorAll<HTMLElement>(selector));
