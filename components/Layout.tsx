@@ -1,20 +1,18 @@
 import React, { useState } from 'react';
-import { useCart } from '../context/CartContext';
 import { Header } from './Header';
 import { Footer } from './Footer';
 import { MobileMenu } from './MobileMenu';
-import { CartSidebar } from './CartSidebar';
+import { ScrollMotion } from './ScrollMotion';
 
 export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const { isCartOpen, toggleCart } = useCart();
 
   return (
     <div className="min-h-screen bg-black text-white font-sans selection:bg-white selection:text-black overflow-x-hidden flex flex-col">
+      <ScrollMotion />
       <Header 
         isMobileMenuOpen={isMobileMenuOpen}
         setIsMobileMenuOpen={setIsMobileMenuOpen}
-        onToggleCart={toggleCart}
       />
 
       {/* Main Content */}
@@ -24,7 +22,6 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
 
       <Footer />
 
-      <CartSidebar isOpen={isCartOpen} onClose={toggleCart} />
       <MobileMenu isOpen={isMobileMenuOpen} onClose={() => setIsMobileMenuOpen(false)} />
     </div>
   );

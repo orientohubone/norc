@@ -1,38 +1,36 @@
-import React, { useEffect } from 'react';
-import { HashRouter, Routes, Route, useLocation } from 'react-router-dom';
-import { CartProvider } from './context/CartContext';
+﻿import React, { useEffect } from 'react';
+import { HashRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import { Layout } from './components/Layout';
 import { Home } from './pages/Home';
 import { LinePage } from './pages/LinePage';
-import { Shop } from './pages/Shop';
-import { ProductDetail } from './pages/ProductDetail';
 import { About } from './pages/About';
 
-const ScrollToTop = () => {
-  const { pathname } = useLocation();
+const ScrollToSection = () => {
+  const { pathname, hash } = useLocation();
   useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [pathname]);
+    const frame = requestAnimationFrame(() => {
+      const target = hash ? document.getElementById(hash.slice(1)) : null;
+      if (target) target.scrollIntoView({ behavior: 'instant' });
+      else window.scrollTo({ top: 0, behavior: 'instant' });
+    });
+    return () => cancelAnimationFrame(frame);
+  }, [pathname, hash]);
   return null;
 };
 
-const App = () => {
-  return (
-    <CartProvider>
-      <HashRouter>
-        <ScrollToTop />
-        <Layout>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/shop" element={<Shop />} />
-            <Route path="/line/:id" element={<LinePage />} />
-            <Route path="/product/:id" element={<ProductDetail />} />
-            <Route path="/about" element={<About />} />
-          </Routes>
-        </Layout>
-      </HashRouter>
-    </CartProvider>
-  );
-};
-
+const App = () => (
+  <HashRouter>
+    <ScrollToSection />
+    <Layout>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/line/:id" element={<LinePage />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/shop" element={<Navigate to="/#linhas" replace />} />
+        <Route path="/product/:id" element={<Navigate to="/#linhas" replace />} />
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Routes>
+    </Layout>
+  </HashRouter>
+);
 export default App;
